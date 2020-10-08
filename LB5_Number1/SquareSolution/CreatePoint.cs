@@ -10,7 +10,7 @@ namespace LB5_Number1.SquareSolution
         public CreatePoint(double X, double Y, double Length)
         {
             this.X = X;
-            this.Y = Y;
+            this.Y = -Y;
             this.Length = Length;
         }
 

@@ -10,6 +10,8 @@ namespace LB5_Number1.SquareSolution
         public CreateSquare(CreatePoint Point)
         {
             this.Point = Point;
+            Point.X += 311d;
+            Point.Y += 240d;
         }
 
         CreatePoint Point { get; set; }

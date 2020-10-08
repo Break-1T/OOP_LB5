@@ -29,15 +29,25 @@ namespace LB5_Number1
 
         private void Create_Click(object sender, RoutedEventArgs e)
         {
-            CreateSquare createSquare = new CreateSquare(new CreatePoint(Convert.ToDouble(CoordinateX.Text), Convert.ToDouble(CoordinateY.Text), Convert.ToDouble(Length.Text)));
-
-            #region Вывод координат
-            ResultA.Text = $"({createSquare.PointA().X}; {createSquare.PointA().Y})";
-            ResultB.Text = $"({createSquare.PointB().X}; {createSquare.PointB().Y})";
-            ResultC.Text = $"({createSquare.PointC().X}; {createSquare.PointC().Y})";
-            ResultD.Text = $"({createSquare.PointD().X}; {createSquare.PointD().Y})";
-            #endregion
-            DrawSquare();
+            if (CoordinateX.Text != null || CoordinateY.Text != null || Length.Text != null)
+            {
+                try
+                {
+                    CreatePoint createPoint = new CreatePoint(Convert.ToDouble(CoordinateX.Text), Convert.ToDouble(CoordinateY.Text), Convert.ToDouble(Length.Text));
+                    CreateSquare createSquare = new CreateSquare(createPoint);
+                    if (createPoint.X == 311 && createPoint.Y == 240)
+                        ShowZeroCoordinates(createSquare);
+                    else
+                        ShowCoordinates(createSquare);
+                    DrawSquare(createSquare);
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.Message);
+                }
+            }
+            else
+                return;
 
         }
         private void Reset_Click(object sender, RoutedEventArgs e)
@@ -67,10 +77,13 @@ namespace LB5_Number1
             LineD.X2 = 0;
             LineD.Y1 = 0;
             LineD.Y2 = 0;
+
+            CoordinateX.Text = null;
+            CoordinateY.Text = null;
+            Length.Text = null;
         }
-        private void DrawSquare()
+        private void DrawSquare(CreateSquare createSquare)
         {
-            CreateSquare createSquare = new CreateSquare(new CreatePoint(Convert.ToDouble(CoordinateX.Text), Convert.ToDouble(CoordinateY.Text), Convert.ToDouble(Length.Text)));
             //First line AB
             LineA.X1 = createSquare.PointA().X;
             LineA.X2 = createSquare.PointB().X;
@@ -92,6 +105,20 @@ namespace LB5_Number1
             LineD.Y1 = createSquare.PointD().Y;
             LineD.Y2 = createSquare.PointA().Y;
 
+        }
+        private void ShowCoordinates(CreateSquare createSquare)
+        {
+            ResultA.Text = $"({createSquare.PointA().X-311d}; {-(createSquare.PointA().Y-240d)})";
+            ResultB.Text = $"({createSquare.PointB().X-311d}; {-(createSquare.PointB().Y-240d)})";
+            ResultC.Text = $"({createSquare.PointC().X-311d}; {-(createSquare.PointC().Y-240d)})";
+            ResultD.Text = $"({createSquare.PointD().X-311d}; {-(createSquare.PointD().Y-240d)})";
+        }
+        private void ShowZeroCoordinates(CreateSquare createSquare)
+        {
+            ResultA.Text = "(0;0)";
+            ResultB.Text = "(0;0)";
+            ResultC.Text = "(0;0)";
+            ResultD.Text = "(0;0)";
         }
     }
 }
