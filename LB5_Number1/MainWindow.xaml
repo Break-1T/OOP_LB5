@@ -33,8 +33,10 @@
                 <TextBlock Grid.Row="0" Text="Введите длину стороны"
                        FontSize="15" Margin="10 10 0 0"/>
                 <TextBox x:Name="Length" Grid.Row="0" Margin="5" Text="0"/>
-                <Button Content="Построить!" Margin="10 15 10 0" Click="Create_Click" Cursor="Hand"/>
+                <Button Content="Построить" Margin="10 15 10 0" Click="Create_Click" Cursor="Hand"/>
                 <Button Content="Сбросить" Margin="10" Click="Reset_Click" Cursor="Hand"/>
+                <Button Content="Left" Margin="10" Click="Left_Click" Cursor="Hand"/>
+                <Button Content="Right" Margin="10" Click="Right_Click" Cursor="Hand"/>
             </StackPanel>
 
             <StackPanel Grid.Row="1">
@@ -42,7 +44,8 @@
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="3.75*"/>
+                        <ColumnDefinition Width="2.5*"/>
+                        <ColumnDefinition Width="2.5*"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition/>
@@ -58,26 +61,31 @@
                                Margin="10 0 0 0"/>
                     <TextBlock Text="D:" FontSize="20" Grid.Column="0" Grid.Row="3"
                                Margin="10 0 0 0"/>
-                    <TextBlock x:Name="ResultA" FontSize="15" Grid.Column="1" Grid.Row="0"/>
-                    <TextBlock x:Name="ResultB" FontSize="15" Grid.Column="1" Grid.Row="1"/>
-                    <TextBlock x:Name="ResultC" FontSize="15" Grid.Column="1" Grid.Row="2"/>
-                    <TextBlock x:Name="ResultD" FontSize="15" Grid.Column="1" Grid.Row="3"/>
+                    <TextBlock x:Name="ResultAX" FontSize="15" Grid.Column="1" Grid.Row="0" Margin="20 0 0 0"/>
+                    <TextBlock x:Name="ResultBX" FontSize="15" Grid.Column="1" Grid.Row="1" Margin="20 0 0 0"/>
+                    <TextBlock x:Name="ResultCX" FontSize="15" Grid.Column="1" Grid.Row="2" Margin="20 0 0 0"/>
+                    <TextBlock x:Name="ResultDX" FontSize="15" Grid.Column="1" Grid.Row="3" Margin="20 0 0 0"/>
 
-                    <Border Grid.ColumnSpan="2" Grid.Row="0" 
+                    <TextBlock x:Name="ResultAY" FontSize="15" Grid.Column="2" Grid.Row="0"/>
+                    <TextBlock x:Name="ResultBY" FontSize="15" Grid.Column="2" Grid.Row="1"/>
+                    <TextBlock x:Name="ResultCY" FontSize="15" Grid.Column="2" Grid.Row="2"/>
+                    <TextBlock x:Name="ResultDY" FontSize="15" Grid.Column="2" Grid.Row="3"/>
+                    
+                    <Border Grid.ColumnSpan="3" Grid.Row="0" 
                             BorderBrush="Black" BorderThickness="1" Margin="3 0 5 0"/>
-                    <Border Grid.ColumnSpan="2" Grid.Row="1" 
+                    <Border Grid.ColumnSpan="3" Grid.Row="1" 
                             BorderBrush="Black" BorderThickness="1" Margin="3 0 5 0"/>
-                    <Border Grid.ColumnSpan="2" Grid.Row="2" 
+                    <Border Grid.ColumnSpan="3" Grid.Row="2" 
                             BorderBrush="Black" BorderThickness="1" Margin="3 0 5 0"/>
-                    <Border Grid.ColumnSpan="2" Grid.Row="3" 
+                    <Border Grid.ColumnSpan="3" Grid.Row="3" 
                             BorderBrush="Black" BorderThickness="1" Margin="3 0 5 0"/>
                 </Grid>
             </StackPanel>
         </Grid>
 
         <Grid Grid.Column="1" Background="Lavender">
-            <Line X1="0" X2="2000" Y1="240" Y2="240" Stroke="Black" StrokeThickness="1"/>
-            <Line X1="311" X2="311" Y1="0" Y2="2500" Stroke="Black" StrokeThickness="1"/>
+            <Line X1="0" X2="2000" Y1="240" Y2="240" Stroke="Black" StrokeThickness="0.5"/>
+            <Line X1="311" X2="311" Y1="0" Y2="2500" Stroke="Black" StrokeThickness="0.5"/>
             <Line x:Name="LineA" Stroke="Black"/>
             <Line x:Name="LineB" Stroke="Black"/>
             <Line x:Name="LineC" Stroke="Black"/>
