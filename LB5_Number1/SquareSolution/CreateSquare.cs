@@ -73,5 +73,13 @@ namespace LB5_Number1.SquareSolution
         {
             return new CreateSquare(PointA.Right);
         }
+        public CreateSquare MoveUP()
+        {
+            return new CreateSquare(PointA.UP);
+        }
+        public CreateSquare MoveDown()
+        {
+            return new CreateSquare(PointA.Down);
+        }
     }
 }

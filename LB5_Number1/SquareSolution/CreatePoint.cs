@@ -40,5 +40,27 @@ namespace LB5_Number1.SquareSolution
                 return RightPoint;
             }
         }
+        public CreatePoint UP
+        {
+            get
+            {
+                CreatePoint LeftPoint = new CreatePoint();
+                LeftPoint.X = X;
+                LeftPoint.Y = Y-10d;
+                LeftPoint.Length = Length;
+                return LeftPoint;
+            }
+        }
+        public CreatePoint Down
+        {
+            get
+            {
+                CreatePoint RightPoint = new CreatePoint();
+                RightPoint.X = X;
+                RightPoint.Y = Y+10d;
+                RightPoint.Length = Length;
+                return RightPoint;
+            }
+        }
     }
 }

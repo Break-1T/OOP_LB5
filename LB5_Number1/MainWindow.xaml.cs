@@ -130,21 +130,45 @@ namespace LB5_Number1
 
         private void Grid_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.Left)
+            switch (e.Key)
             {
-                CreatePoint createPoint = new CreatePoint(Convert.ToDouble(ResultAX.Text), Convert.ToDouble(ResultAY.Text), Convert.ToDouble(Length.Text));
-                CreateSquare createSquare = new CreateSquare(createPoint);
+                case Key.Left:
+                    {
+                        CreatePoint createPoint = new CreatePoint(Convert.ToDouble(ResultAX.Text), Convert.ToDouble(ResultAY.Text), Convert.ToDouble(Length.Text));
+                        CreateSquare createSquare = new CreateSquare(createPoint);
 
-                ShowCoordinates(createSquare.MoveLeft());
-                DrawSquare(createSquare.MoveLeft());
-            }
-            else if (e.Key == Key.Right)
-            {
-                CreatePoint createPoint = new CreatePoint(Convert.ToDouble(ResultAX.Text), Convert.ToDouble(ResultAY.Text), Convert.ToDouble(Length.Text));
-                CreateSquare createSquare = new CreateSquare(createPoint);
+                        ShowCoordinates(createSquare.MoveLeft());
+                        DrawSquare(createSquare.MoveLeft());
+                        break;
+                    }
 
-                ShowCoordinates(createSquare.MoveRight());
-                DrawSquare(createSquare.MoveRight());
+                case Key.Right:
+                    {
+                        CreatePoint createPoint = new CreatePoint(Convert.ToDouble(ResultAX.Text), Convert.ToDouble(ResultAY.Text), Convert.ToDouble(Length.Text));
+                        CreateSquare createSquare = new CreateSquare(createPoint);
+
+                        ShowCoordinates(createSquare.MoveRight());
+                        DrawSquare(createSquare.MoveRight());
+                        break;
+                    }
+                case Key.Up:
+                    {
+                        CreatePoint createPoint = new CreatePoint(Convert.ToDouble(ResultAX.Text), Convert.ToDouble(ResultAY.Text), Convert.ToDouble(Length.Text));
+                        CreateSquare createSquare = new CreateSquare(createPoint);
+
+                        ShowCoordinates(createSquare.MoveUP());
+                        DrawSquare(createSquare.MoveUP());
+                        break;
+                    }
+                case Key.Down:
+                    {
+                        CreatePoint createPoint = new CreatePoint(Convert.ToDouble(ResultAX.Text), Convert.ToDouble(ResultAY.Text), Convert.ToDouble(Length.Text));
+                        CreateSquare createSquare = new CreateSquare(createPoint);
+
+                        ShowCoordinates(createSquare.MoveDown());
+                        DrawSquare(createSquare.MoveDown());
+                        break;
+                    }
             }
         }
     }
