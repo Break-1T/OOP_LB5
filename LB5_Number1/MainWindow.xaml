@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:LB5_Number1"
         mc:Ignorable="d"
         Title="BuildingOfSquare" Height="500" Width="800" ResizeMode="CanMinimize">
-    <Grid>
+    <Grid KeyUp="Grid_KeyUp">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="3.5*"/>
@@ -35,8 +35,6 @@
                 <TextBox x:Name="Length" Grid.Row="0" Margin="5" Text="0"/>
                 <Button Content="Построить" Margin="10 15 10 0" Click="Create_Click" Cursor="Hand"/>
                 <Button Content="Сбросить" Margin="10" Click="Reset_Click" Cursor="Hand"/>
-                <Button Content="Left" Margin="10" Click="Left_Click" Cursor="Hand"/>
-                <Button Content="Right" Margin="10" Click="Right_Click" Cursor="Hand"/>
             </StackPanel>
 
             <StackPanel Grid.Row="1">

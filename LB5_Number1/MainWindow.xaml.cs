@@ -48,22 +48,6 @@ namespace LB5_Number1
                 return;
 
         }
-        private void Left_Click(object sender, RoutedEventArgs e)
-        {
-            CreatePoint createPoint = new CreatePoint(Convert.ToDouble(ResultAX.Text), Convert.ToDouble(ResultAY.Text), Convert.ToDouble(Length.Text));
-            CreateSquare createSquare = new CreateSquare(createPoint);
-            
-            ShowCoordinates(createSquare.MoveLeft());
-            DrawSquare(createSquare.MoveLeft());
-        }
-        private void Right_Click(object sender, RoutedEventArgs e)
-        {
-            CreatePoint createPoint = new CreatePoint(Convert.ToDouble(ResultAX.Text), Convert.ToDouble(ResultAY.Text), Convert.ToDouble(Length.Text));
-            CreateSquare createSquare = new CreateSquare(createPoint);
-            
-            ShowCoordinates(createSquare.MoveRight());
-            DrawSquare(createSquare.MoveRight());
-        }
         private void Reset_Click(object sender, RoutedEventArgs e)
         {
             Reset();
@@ -142,6 +126,26 @@ namespace LB5_Number1
             CoordinateX.Text = "0";
             CoordinateY.Text = "0";
             Length.Text = "0";
+        }
+
+        private void Grid_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Left)
+            {
+                CreatePoint createPoint = new CreatePoint(Convert.ToDouble(ResultAX.Text), Convert.ToDouble(ResultAY.Text), Convert.ToDouble(Length.Text));
+                CreateSquare createSquare = new CreateSquare(createPoint);
+
+                ShowCoordinates(createSquare.MoveLeft());
+                DrawSquare(createSquare.MoveLeft());
+            }
+            else if (e.Key == Key.Right)
+            {
+                CreatePoint createPoint = new CreatePoint(Convert.ToDouble(ResultAX.Text), Convert.ToDouble(ResultAY.Text), Convert.ToDouble(Length.Text));
+                CreateSquare createSquare = new CreateSquare(createPoint);
+
+                ShowCoordinates(createSquare.MoveRight());
+                DrawSquare(createSquare.MoveRight());
+            }
         }
     }
 }
