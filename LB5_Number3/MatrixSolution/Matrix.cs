@@ -68,5 +68,12 @@ namespace LB5_Number3.MatrixSolution
                 }
             }
         }
+        public void Det()
+        {
+            if (this.Rows == this.Collums)
+            {
+
+            }
+        }
     }
 }
