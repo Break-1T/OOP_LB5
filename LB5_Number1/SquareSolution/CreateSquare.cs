@@ -8,78 +8,58 @@ namespace LB5_Number1.SquareSolution
     class CreateSquare
     {
         public CreateSquare() { }
-        public CreateSquare(CreatePoint PointA)
+        public CreateSquare(CreatePoint BasePoint)
         {
-            this.PointA = PointA;
+            this.BasePoint = BasePoint;
+        }
+        public CreatePoint BasePoint;
+        //Получение точек
+        public virtual CreatePoint GetPointA()
+        {
+            return BasePoint;
+        }
+        public virtual CreatePoint GetPointB()
+        {
+            CreatePoint pointB = new CreatePoint();
+            pointB.X = BasePoint.X + BasePoint.Length;
+            pointB.Y = BasePoint.Y;
+            pointB.Length = BasePoint.Length;
+
+            return pointB;
+        }
+        public virtual CreatePoint GetPointC()
+        {
+            CreatePoint pointC = new CreatePoint();
+            pointC.X = BasePoint.X + BasePoint.Length;
+            pointC.Y = BasePoint.Y + BasePoint.Length;
+
+            return pointC;
+        }
+        public virtual CreatePoint GetPointD()
+        {
+            CreatePoint pointD = new CreatePoint();
+            pointD.X = BasePoint.X;
+            pointD.Y = BasePoint.Y + BasePoint.Length;
+
+            return pointD;
         }
 
-        private CreatePoint _pointB;
-        private CreatePoint _pointC;
-        private CreatePoint _pointD;
-
-        public CreatePoint PointA { get; set; }
-        public CreatePoint PointB
-        {
-            get
-            {
-                CreatePoint pointB = new CreatePoint();
-                pointB.X = PointA.X + PointA.Length;
-                pointB.Y = PointA.Y;
-                pointB.Length = PointA.Length;
-
-                return pointB;
-            }
-            set
-            {
-                _pointB = value;
-            }
-        }
-        public CreatePoint PointC
-        {
-            get
-            {
-                CreatePoint pointC = new CreatePoint();
-                pointC.X = PointA.X + PointA.Length;
-                pointC.Y = PointA.Y + PointA.Length;
-
-                return pointC;
-            }
-            set
-            {
-                _pointC = value;
-            }
-        }
-        public CreatePoint PointD
-        {
-            get
-            {
-                CreatePoint pointD = new CreatePoint();
-                pointD.X = PointA.X;
-                pointD.Y = PointA.Y + PointA.Length;
-
-                return pointD;
-            }
-            set
-            {
-                _pointD = value;
-            }
-        }
-
+        //Передвижение фигуры
         public CreateSquare MoveLeft()
         {
-            return new CreateSquare(PointA.Left);
+            return new CreateSquare(BasePoint.Left);
         }
         public CreateSquare MoveRight()
         {
-            return new CreateSquare(PointA.Right);
+            return new CreateSquare(BasePoint.Right);
         }
         public CreateSquare MoveUP()
         {
-            return new CreateSquare(PointA.UP);
+            return new CreateSquare(BasePoint.UP);
         }
         public CreateSquare MoveDown()
         {
-            return new CreateSquare(PointA.Down);
+            return new CreateSquare(BasePoint.Down);
         }
     }
 }

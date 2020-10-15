@@ -46,50 +46,8 @@ namespace LB5_Number1
             }
             else
                 return;
-
         }
         private void Reset_Click(object sender, RoutedEventArgs e)
-        {
-            Reset();
-        }
-
-        private void DrawSquare(CreateSquare createSquare)
-        {
-            //First line AB
-            LineA.X1 = createSquare.PointA.X;
-            LineA.X2 = createSquare.PointB.X;
-            LineA.Y1 = createSquare.PointA.Y;
-            LineA.Y2 = createSquare.PointB.Y;
-            //Second Line BC
-            LineB.X1 = createSquare.PointB.X;
-            LineB.X2 = createSquare.PointC.X;
-            LineB.Y1 = createSquare.PointB.Y;
-            LineB.Y2 = createSquare.PointC.Y;
-            //Third Line CD
-            LineC.X1 = createSquare.PointC.X;
-            LineC.X2 = createSquare.PointD.X;
-            LineC.Y1 = createSquare.PointC.Y;
-            LineC.Y2 = createSquare.PointD.Y;
-            //Fourth Line CA
-            LineD.X1 = createSquare.PointD.X;
-            LineD.X2 = createSquare.PointA.X;
-            LineD.Y1 = createSquare.PointD.Y;
-            LineD.Y2 = createSquare.PointA.Y;
-
-        }
-        private void ShowCoordinates(CreateSquare createSquare)
-        {
-            ResultAX.Text = $"{createSquare.PointA.X-311d}";
-            ResultBX.Text = $"{createSquare.PointB.X-311d}";
-            ResultCX.Text = $"{createSquare.PointC.X-311d}";
-            ResultDX.Text = $"{createSquare.PointD.X-311d}";
-
-            ResultAY.Text = $"{-(createSquare.PointA.Y - 240d)}";
-            ResultBY.Text = $"{-(createSquare.PointB.Y - 240d)}";
-            ResultCY.Text = $"{-(createSquare.PointC.Y - 240d)}";
-            ResultDY.Text = $"{-(createSquare.PointD.Y - 240d)}";
-        }
-        private void Reset()
         {
             //Координаты точек
             ResultAX.Text = null;
@@ -128,6 +86,42 @@ namespace LB5_Number1
             Length.Text = "0";
         }
 
+        private void DrawSquare(CreateSquare createSquare)
+        {
+            //First line AB
+            LineA.X1 = createSquare.GetPointA().X;
+            LineA.X2 = createSquare.GetPointB().X;
+            LineA.Y1 = createSquare.GetPointA().Y;
+            LineA.Y2 = createSquare.GetPointB().Y;
+            //Second Line BC
+            LineB.X1 = createSquare.GetPointB().X;
+            LineB.X2 = createSquare.GetPointC().X;
+            LineB.Y1 = createSquare.GetPointB().Y;
+            LineB.Y2 = createSquare.GetPointC().Y;
+            //Third Line CD
+            LineC.X1 = createSquare.GetPointC().X;
+            LineC.X2 = createSquare.GetPointD().X;
+            LineC.Y1 = createSquare.GetPointC().Y;
+            LineC.Y2 = createSquare.GetPointD().Y;
+            //Fourth Line CA
+            LineD.X1 = createSquare.GetPointD().X;
+            LineD.X2 = createSquare.GetPointA().X;
+            LineD.Y1 = createSquare.GetPointD().Y;
+            LineD.Y2 = createSquare.GetPointA().Y;
+
+        }
+        private void ShowCoordinates(CreateSquare createSquare)
+        {
+            ResultAX.Text = $"{createSquare.GetPointA().X-311d}";
+            ResultBX.Text = $"{createSquare.GetPointB().X-311d}";
+            ResultCX.Text = $"{createSquare.GetPointC().X-311d}";
+            ResultDX.Text = $"{createSquare.GetPointD().X-311d}";
+
+            ResultAY.Text = $"{-(createSquare.GetPointA().Y - 240d)}";
+            ResultBY.Text = $"{-(createSquare.GetPointB().Y - 240d)}";
+            ResultCY.Text = $"{-(createSquare.GetPointC().Y - 240d)}";
+            ResultDY.Text = $"{-(createSquare.GetPointD().Y - 240d)}";
+        }
         private void Grid_KeyUp(object sender, KeyEventArgs e)
         {
             switch (e.Key)
@@ -168,7 +162,7 @@ namespace LB5_Number1
                         ShowCoordinates(createSquare.MoveDown());
                         DrawSquare(createSquare.MoveDown());
                         break;
-                    }
+                    }   
             }
         }
     }

@@ -44,22 +44,22 @@ namespace LB5_Number1.SquareSolution
         {
             get
             {
-                CreatePoint LeftPoint = new CreatePoint();
-                LeftPoint.X = X;
-                LeftPoint.Y = Y-10d;
-                LeftPoint.Length = Length;
-                return LeftPoint;
+                CreatePoint UpPoint = new CreatePoint();
+                UpPoint.X = X;
+                UpPoint.Y = Y-10d;
+                UpPoint.Length = Length;
+                return UpPoint;
             }
         }
         public CreatePoint Down
         {
             get
             {
-                CreatePoint RightPoint = new CreatePoint();
-                RightPoint.X = X;
-                RightPoint.Y = Y+10d;
-                RightPoint.Length = Length;
-                return RightPoint;
+                CreatePoint DownPoint = new CreatePoint();
+                DownPoint.X = X;
+                DownPoint.Y = Y+10d;
+                DownPoint.Length = Length;
+                return DownPoint;
             }
         }
     }

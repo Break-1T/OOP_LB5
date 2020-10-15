@@ -84,10 +84,10 @@
         <Grid Grid.Column="1" Background="Lavender">
             <Line X1="0" X2="2000" Y1="240" Y2="240" Stroke="Black" StrokeThickness="0.5"/>
             <Line X1="311" X2="311" Y1="0" Y2="2500" Stroke="Black" StrokeThickness="0.5"/>
-            <Line x:Name="LineA" Stroke="Black"/>
-            <Line x:Name="LineB" Stroke="Black"/>
-            <Line x:Name="LineC" Stroke="Black"/>
-            <Line x:Name="LineD" Stroke="Black"/>
+            <Line x:Name="LineA" Stroke="Red"/>
+            <Line x:Name="LineB" Stroke="Red"/>
+            <Line x:Name="LineC" Stroke="Red"/>
+            <Line x:Name="LineD" Stroke="Red"/>
         </Grid>
     </Grid>
 </Window>
