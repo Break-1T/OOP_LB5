@@ -6,21 +6,7 @@ namespace LB5_Number3
     class Program
     {
         static void Main(string[] args)
-        {
-            Matrix matrix1 = new Matrix(4, 4);
-
-            matrix1.Add(1, 1, 50);
-            matrix1.Add(2, 1, 150);
-            matrix1.Add(3, 1, 250);
-            matrix1.Add(3, 2, 350);
-            matrix1.Add(1, 3, 450);
-            matrix1.Add(2, 3, 500);
-            matrix1.Add(1, 2, 1500);
-            matrix1.Add(2, 2, 2500);
-            matrix1.Show();
-            DetCalc det = new DetCalc(matrix1);
-            det.AlgebraicComplement(0,1,matrix1._Matrix);
-            
+        {            
             string[] MatrixClasses = {"Обычная матрица", "Единичная матрица", "Верхняя треугольная матрица"};
             while (true)
             {
@@ -65,7 +51,7 @@ namespace LB5_Number3
                         }
                     case 3:
                         {
-                            UpperTriangularMatrix upper = new UpperTriangularMatrix(3, 3);
+                            UpperTriangularMatrix upper = new UpperTriangularMatrix(4, 4);
                             upper.Show();
                             upper.Clear();
                             upper.Add();

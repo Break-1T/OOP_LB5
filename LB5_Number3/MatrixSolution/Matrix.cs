@@ -16,6 +16,8 @@ namespace LB5_Number3.MatrixSolution
         public int Rows { get; set; }
         public int Collums { get; set; }
 
+        Matrix DetMtrix;
+
         public virtual void Show()
         {
             Console.WriteLine(new string('-', 50));
@@ -27,6 +29,13 @@ namespace LB5_Number3.MatrixSolution
                 }
                 Console.WriteLine();
             }
+            Console.WriteLine(new string('-', 50));
+            Console.ForegroundColor = ConsoleColor.Red;
+            DetMtrix = new Matrix(Rows, Collums);
+            DetMtrix._Matrix = this._Matrix;
+            DetCalc det = new DetCalc(DetMtrix);
+            Console.WriteLine("Det: " + det.GetDet());
+            Console.ResetColor();
             Console.WriteLine(new string('-', 50));
         }
         public virtual void Add()
@@ -66,13 +75,6 @@ namespace LB5_Number3.MatrixSolution
                 {
                     _Matrix[i, j] = 0;
                 }
-            }
-        }
-        public void Det()
-        {
-            if (this.Rows == this.Collums)
-            {
-
             }
         }
     }

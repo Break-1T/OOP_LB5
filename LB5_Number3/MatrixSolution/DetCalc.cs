@@ -10,33 +10,31 @@ namespace LB5_Number3.MatrixSolution
     {
         public DetCalc(Matrix _matrix)
         {
-            this._matrix = _matrix;
+            this.CalcMatrix = _matrix;
         }
 
         const double NoElement = -5547948.1549473;
 
-        Matrix _matrix;
+        Matrix CalcMatrix;
 
         public double GetDet()
         {
-            if (_matrix.Rows != _matrix.Collums)
+            if (CalcMatrix.Rows != CalcMatrix.Collums)
                 return 0;
-            if (_matrix.Rows == 2 && _matrix.Collums == 2)
-                return DetTwo(_matrix._Matrix);
-            if (_matrix.Rows == 3 && _matrix.Collums == 3)
-                return DetThird(_matrix._Matrix);
+            if (CalcMatrix.Rows == 2 && CalcMatrix.Collums == 2)
+                return DetTwo(CalcMatrix._Matrix);
+            if (CalcMatrix.Rows == 3 && CalcMatrix.Collums == 3)
+                return DetThird(CalcMatrix._Matrix);
 
-            double[,] InputMas = _matrix._Matrix;
-            int rows = _matrix.Rows;
-            int colums = _matrix.Collums;
-            double result = 0;
+            double[,] InputMas = CalcMatrix._Matrix;
+            int rows = CalcMatrix.Rows;
+            double sum = 0;
 
             for(int i = 0; i < rows; i++)
             {
-                result += Math.Pow(-1, i + 1) * InputMas[0, i] * DetThird(Minor(0, i, InputMas));
+                sum += (InputMas[0, i] * DetThird(AlgebraicComplement(0, i, InputMas)));
             }
-            Console.WriteLine(result);
-            return result;            
+            return sum;            
         }
         public double DetThird(double[,] mas)
         {
@@ -50,13 +48,20 @@ namespace LB5_Number3.MatrixSolution
             double result2 = (mas[0, 1] * mas[1, 0]);
             return result1 - result2;
         }
-        public double[,] Minor(int a, int b, double[,] mas)
+        private double[,] Minor(int a, int b, double[,] mas)
         {
-            if (mas == null)
-                throw new Exception();
-
             int collums = mas.GetUpperBound(0) + 1;
-            int rows =mas.Length/collums;
+            int rows = mas.Length/collums;
+            double[,] inputmatrix = new double[rows,collums];
+            //Copy mas -> inputmas
+            for (int i = 0; i < rows; i++)
+            {
+                for (int j = 0; j < collums; j++)
+                {
+                    inputmatrix[i, j] = mas[i, j];
+                }
+            }
+
             double[,] result = new double[rows-1, collums-1];
 
             for(int i = 0; i < rows; i++)
@@ -65,7 +70,7 @@ namespace LB5_Number3.MatrixSolution
                 {
                     if (i == a)
                     {
-                        mas[i, j] = NoElement;
+                        inputmatrix[i, j] = NoElement;
                     }
                 }
             }
@@ -75,14 +80,14 @@ namespace LB5_Number3.MatrixSolution
                 {
                     if (j == b)
                     {
-                        mas[i,j] = NoElement;
+                        inputmatrix[i,j] = NoElement;
                     }
                 }
             }
 
-            double[] pointmas = new double[mas.Length];
+            double[] pointmas = new double[inputmatrix.Length];
             int count = 0;
-            foreach(double i in mas)
+            foreach(double i in inputmatrix)
             {
                 pointmas[count] = i;
                 count++;
@@ -106,7 +111,7 @@ namespace LB5_Number3.MatrixSolution
             }
             return result;
         }
-        public double[,] AlgebraicComplement(int row, int collum , double [,] mas)
+        private double[,] AlgebraicComplement(int row, int collum, double[,] mas)
         {
             double[,] resultMas = Minor(row, collum, mas);
             int collums = resultMas.GetUpperBound(0) + 1;
@@ -119,9 +124,7 @@ namespace LB5_Number3.MatrixSolution
                     {
                         resultMas[i, j] *= -1d;
                     }
-                    Console.Write(resultMas[i,j]+"\t");
                 }
-                Console.WriteLine();
             }
             return resultMas;
         }
