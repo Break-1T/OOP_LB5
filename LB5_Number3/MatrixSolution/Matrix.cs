@@ -16,8 +16,6 @@ namespace LB5_Number3.MatrixSolution
         public int Rows { get; set; }
         public int Collums { get; set; }
 
-        Matrix DetMtrix;
-
         public virtual void Show()
         {
             Console.WriteLine(new string('-', 50));
@@ -31,10 +29,7 @@ namespace LB5_Number3.MatrixSolution
             }
             Console.WriteLine(new string('-', 50));
             Console.ForegroundColor = ConsoleColor.Red;
-            DetMtrix = new Matrix(Rows, Collums);
-            DetMtrix._Matrix = this._Matrix;
-            DetCalc det = new DetCalc(DetMtrix);
-            Console.WriteLine("Det: " + det.GetDet());
+            Console.WriteLine("Det: " + DetCalc.GetDet(_Matrix));
             Console.ResetColor();
             Console.WriteLine(new string('-', 50));
         }
@@ -59,6 +54,20 @@ namespace LB5_Number3.MatrixSolution
             Console.WriteLine($"Added  [{Row},{Collum}] = {content}");
             this._Matrix[Row - 1, Collum - 1] = content;
         }
+        public virtual void AutoAdd()
+        {
+            Random random = new Random();
+            Console.WriteLine($"Размерность матрицы {Rows}х{Collums}\n*Автоматическое добавление элементов*");
+
+            for (int i = 0; i < Rows; i++)
+            {
+                for (int j = 0; j < Collums; j++)
+                {
+                    _Matrix[i, j] = random.Next(-25,50);
+                }
+            }
+        }
+
         public void Delete(int Row, int Collum)
         {
             Console.WriteLine($"Deleted [{Row},{Collum}]");

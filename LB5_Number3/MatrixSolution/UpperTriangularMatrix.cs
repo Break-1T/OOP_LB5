@@ -35,5 +35,21 @@ namespace LB5_Number3.MatrixSolution
                 j++;
             }
         }
+        public override void AutoAdd()
+        {
+            Random random = new Random();
+            Console.WriteLine($"Размерность матрицы {Rows}х{Collums}\n*Автоматическое добавление элементов*");
+
+            int j = 0;
+
+            for (int i = 0; i < Rows; i++)
+            {
+                for (int k = j; k < Collums; k++)
+                {
+                    _Matrix[i, k] = random.Next(-25,50);
+                }
+                j++;
+            }
+        }
     }
 }

@@ -13,12 +13,18 @@ namespace LB5_Number3
                 Console.WriteLine("Какая матрица: ");
                 for (int i = 0; i < MatrixClasses.Length; i++)
                     Console.WriteLine($"{i + 1}. {MatrixClasses[i]}");
+                Console.Write("--> ");
                 int n = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Введите размерность матрицы:");
+                Console.Write("Рядков:");
+                int r = Convert.ToInt32(Console.ReadLine());
+                Console.Write("Столбцов:");
+                int c = Convert.ToInt32(Console.ReadLine());
                 switch (n)
                 {
                     case 1:
                         {
-                            Matrix matrix = new Matrix(3, 3);
+                            Matrix matrix = new Matrix(r, c);
                             matrix.Show();
 
                             matrix.Add(1, 1, 50);
@@ -32,6 +38,11 @@ namespace LB5_Number3
                             matrix.Delete(1, 3);
                             matrix.Show();
 
+                            matrix.Clear();
+                            matrix.AutoAdd();
+                            matrix.Show();
+                            matrix.Clear();
+
                             matrix.Add();
                             matrix.Show();
 
@@ -41,7 +52,7 @@ namespace LB5_Number3
                         }
                     case 2:
                         {
-                            SingleMatrix single = new SingleMatrix(3, 3);
+                            SingleMatrix single = new SingleMatrix(r, c);
                             single.Show();
                             single.Clear();
                             single.Show();
@@ -51,7 +62,7 @@ namespace LB5_Number3
                         }
                     case 3:
                         {
-                            UpperTriangularMatrix upper = new UpperTriangularMatrix(4, 4);
+                            UpperTriangularMatrix upper = new UpperTriangularMatrix(r, c);
                             upper.Show();
                             upper.Clear();
                             upper.Add();
