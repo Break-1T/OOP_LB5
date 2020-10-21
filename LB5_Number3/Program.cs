@@ -8,6 +8,7 @@ namespace LB5_Number3
         static void Main(string[] args)
         {            
             string[] MatrixClasses = {"Обычная матрица", "Единичная матрица", "Верхняя треугольная матрица"};
+            Console.Write("Hello");
             while (true)
             {
                 Console.WriteLine("Какая матрица: ");
