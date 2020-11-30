@@ -15,8 +15,10 @@ namespace LB5_Number3.MatrixSolution
             int collums = inputmas.GetUpperBound(0) + 1;
             int rows = inputmas.Length / collums;
             if (rows != collums)
+            {
                 Console.WriteLine("Количество строк не равно количнству столбцов!");
                 return 0;
+            }
             if (rows == 2 && collums == 2)
                 return DetTwo(inputmas);
             if (rows == 3 && collums == 3)
